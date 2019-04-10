@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import items from './Store.js';
+import Product from './components/Product';
 
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state={
+      items
+    }
+  }
+
+
+  click=(amount,e)=>{
+    console.log(e.amount)
+    amount===1?console.log('increase'):console.log('decrease')
+  }
   render() {
+    console.log(this.state.items)
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+
+      <Product items={items}
+      click={this.click}
+      />
+
+
+
+
       </div>
     );
   }
