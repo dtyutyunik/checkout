@@ -3,27 +3,35 @@ import React from 'react';
 export default function Product(props){
 
 return(
-  <div class>
-  {props.items.map((i)=>{
+  <div>
+  {props.items.map((i,index)=>{
 
     return (
-      <div className="items">
+      <div key={index} className="items">
         <img src={require("../media/paintballGun.jpeg")} alt={i.image}/>
-      <p>  {i.name}</p>
+      <div>
+      <p> Name: {i.name}</p>
 
-      <p>{i.description}</p>
+      <p>Description:{i.description}</p>
       <p>Price is {i.price}</p>
 
 
-      <p>Amount is {i.amount}</p>
-
-
-      <button onClick={()=>props.click(1,i)}>+</button>
       <button onClick={()=>props.click(-1,i)}>-</button>
+      <span>Amount is {i.amount}</span>
+      <button onClick={()=>props.click(1,i)}>+</button>
+
+
+      <p>Total cost for items is ${i.amount*i.price}</p>
+      </div>
+
       </div>
     )
 
+
   })}
+
+
+
   </div>
 )
 
