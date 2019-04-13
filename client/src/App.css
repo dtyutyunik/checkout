@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .items{
@@ -13,6 +13,45 @@
 
 .items >div{
   border: 1px solid yellow;
-  /* display: flex; */
-  /* flex-direction: column; */
+
 }
+
+.checkout{
+  border: 2px solid red;
+  /* display: flex; */
+  /* flex:1; */
+}
+
+.card{
+  border:1px solid black;
+}
+
+button[type='submit']{
+  background-color: blue;
+  color: white;
+
+}
+
+button:hover{
+  transform: translateY(-1px);
+  cursor: pointer;
+}
+
+label{
+  color: black;
+}
+
+input[type='text'],
+.cardElements {
+
+      min-width:300px;;
+      max-width: 300px;
+      font-size: 1em;
+      border:0;
+      outline:0;
+      line-height: 1em;
+
+      box-shadow: inset 0px 0px 19px 0px rgba(46,74,117,1);
+
+
+    }
