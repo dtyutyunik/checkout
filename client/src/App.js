@@ -24,36 +24,59 @@ class App extends Component {
         necklaces: necklaces,
         watches: watches,
         earrings: earrings,
-        selected: '',
-        view: ''
+        selected: 'all',
+        view: '',
+        sum: 0
     }
   }
 
-  checkout=(cost)=>{
-    console.log(`final price is ${cost}`)
-  }
-
-  click=(choice,amount,e)=>{
-
-    const {name}=e;
-
-  const found=this.state.choice.map((i)=>{
-    if(i.name===name){
-      amount===1?i.amount++:i.amount!==0?i.amount--:i.amount=0;
-      return i;
+    checkout=(cost)=>{
+      console.log(`final price is ${cost}`)
     }
-    else{
-      return i;
+
+    sum=()=>{
+
+      let sum1=0,sum2=0,sum3=0;
+      this.state.watches.map((i)=>{
+        sum1+=i.amount*i.price
+      });
+
+      this.state.earrings.map((i)=>{
+        sum2+=i.amount*i.price
+      });
+
+      this.state.necklaces.map((i)=>{
+        sum3+=i.amount*i.price
+      });
+
+      console.log(sum1+sum2+sum3, 'is the sum')
+      let result=sum1+sum2+sum3;
+      this.setState({
+        sum: result
+      })
+
+
     }
-  })
 
+  click=(amount,e,choice)=>{
 
-    // this.setState((prevState)=>{
-    //   return(
-    //     items: found
-    //   )
-    // })
+    const {name,type}=e;
 
+    const found=choice.map((i)=>{
+      if(i.name===name){
+        amount===1?i.amount++:i.amount!==0?i.amount--:i.amount=0;
+        return i;
+      }
+      else{
+        return i;
+      }
+    })
+
+    this.setState((prevState)=>{
+      return(
+        [type]: found
+      )
+    })
 
   }
 
@@ -61,7 +84,6 @@ class App extends Component {
       this.setState({
         selected: item
       })
-
   }
 
   handleMenuClick=(e)=>{
@@ -78,22 +100,24 @@ class App extends Component {
             this.setState({
               view: <Product selection={this.selection}
               selected={this.state.selected}
+              watches={this.state.watches}
+              earrings={this.state.earrings}
+              necklaces={this.state.necklaces}
               click={this.click}
               />
             });
             break;
       case 'checkout':
+              this.sum();
               this.setState({
                 view:
                 <div>
-                <Total data={this.state.items}
-                checkout={this.checkout}
-                />
+
                 <StripeProvider apiKey={Publishable_key}>
                       <div className="example">
                         <h1>React Stripe Elements Example</h1>
                         <Elements>
-                          <Checkout />
+                          <Checkout amount={this.state.sum}/>
                         </Elements>
                       </div>
                     </StripeProvider>
@@ -108,7 +132,7 @@ class App extends Component {
 
 
   componentDidMount=()=>{
-  this.handleMenuClick("aboutus");
+    this.handleMenuClick("products");
   }
 
 
@@ -116,10 +140,6 @@ class App extends Component {
     return (
       <div className="App">
       <Nav handleMenuClick={this.handleMenuClick}/>
-
-
-
-
         {this.state.view}
       </div>
     );
@@ -127,3 +147,20 @@ class App extends Component {
 }
 
 export default App;
+
+// <StripeProvider apiKey={Publishable_key}>
+//       <div className="example">
+//         <h1>React Stripe Elements Example</h1>
+//         <Elements>
+//           <Checkout />
+//         </Elements>
+//       </div>
+//     </StripeProvider>
+
+
+// <Total
+// watches={this.state.watches}
+// earrings={this.state.earrings}
+// necklaces={this.state.necklaces}
+// checkout={this.checkout}
+// />

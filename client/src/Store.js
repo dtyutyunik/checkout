@@ -6,7 +6,7 @@ const necklaces=[
     description: 'A Forever Necklace made out of Swarovski crystals. This necklace will last as Forever as the crystals its imbedded with.',
     image: "require(./media/foreverNecklace.jpg)",
     amount:0,
-    type: 'necklace'
+    type: 'necklaces'
   },
   {
     name: 'Bow Fashion',
@@ -14,7 +14,7 @@ const necklaces=[
     description: "A Bow Necklace made out of Swarovski crystals. Finally a bow that you'll never want to take off",
     image: 'require(./media/bowNecklace.jpg)',
     amount:0,
-    type: 'necklace'
+    type: 'necklaces'
   },
   {
     name: 'Only Key',
@@ -22,7 +22,7 @@ const necklaces=[
     description: "Don't leave your house without the Key of a necklace. Elegant Swarovski crystals make this key one to have",
     image: "require(./media/keyNecklace.jpg)",
     amount:0,
-    type: 'necklace'
+    type: 'necklaces'
   }
 ];
 
@@ -34,7 +34,7 @@ const watches=[
     description: 'A bold unique and eye-catching timepiece with Swarovski crystals. A rose gold-tone coated stainless steel case and black genuine leather strap complete the design.',
     image: "require(./media/blackWatch.jpg)",
     amount:0,
-    type: 'watch'
+    type: 'watches'
   },
   {
     name: 'Classic Gold',
@@ -42,7 +42,7 @@ const watches=[
     description: "The case and strap are beautifully crafted in stainless steel with a rose gold-tone coating a Swarovski classic.",
     image: 'require(./media/goldWatch.jgp)',
     amount:0,
-    type: 'watch'
+    type: 'watches'
   },
   {
     name: 'Oval Crystal',
@@ -50,7 +50,7 @@ const watches=[
     description: "Crystal oval stainless steel outer ring with yellow-gold tone coating, circular inner ring filled with approximately 1’700 clear crystals",
     image: "require(./media/ovalWatch.jpg)",
     amount:0,
-    type: 'watch'
+    type: 'watches'
   },
   {
     name: 'Roman Crystal',
@@ -58,7 +58,7 @@ const watches=[
     description: "The collesium of watches with a rose gold-tone coated Roman numeral index markers and a stainless steel metal bracelet",
     image: "require(./media/silverWatch.jpg)",
     amount:0,
-    type: 'watch'
+    type: 'watches'
   }
 ];
 

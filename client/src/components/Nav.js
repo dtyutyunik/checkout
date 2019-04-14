@@ -10,7 +10,7 @@ export default function Nav(props){
           <a onClick={()=>props.handleMenuClick("products")}>Product</a>
           <a onClick={()=>props.handleMenuClick("checkout")}>Checkout</a>
 
-</nav>
+        </nav>
 
     </div>
   )

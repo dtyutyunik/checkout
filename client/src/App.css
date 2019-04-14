@@ -55,3 +55,27 @@ input[type='text'],
 
 
     }
+
+img{
+  height: 200px;
+  width: 200px;
+}
+
+nav{
+  border:1px solid red;
+  display:flex;
+  justify-content: space-around;
+  background: silver;
+}
+
+nav >a{
+  /* border: 1px solid blue; */
+  font-size: 2em;
+  /* background: black; */
+  color:white;
+}
+
+nav>a:hover{
+  color:red;
+  pointer-events: auto;
+}

@@ -16,10 +16,9 @@ class Checkout extends Component {
 
   async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: this.state.name});
-    // let message= await axios.post(`${URL}/charge`,token);
-    // const express=await axios.get(`${URL}/checkout/${this.state.address}`);
+
     console.log(token.id)
-  let response = await fetch("/charge", {
+  let response = await fetch(`/charge/${this.props.amount}`, {
     method: "POST",
     headers: {"Content-Type": "text/plain"},
     body: token.id
@@ -78,6 +77,7 @@ handleChange=(e)=>{
         </div>
 
         <button type='submit' onClick={this.submit}>Pay</button>
+        amount is{this.props.amount}
       </div>
     );
   }
@@ -107,5 +107,3 @@ const createOptions = () => {
     },
   };
 };
-
-// <CardElement />
