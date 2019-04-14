@@ -12,7 +12,7 @@ export default class Product extends Component{
   }
 
   componentDidMount(){
-
+    this.handleView(this.state.view)
   }
 
 
@@ -35,7 +35,7 @@ export default class Product extends Component{
               click={this.props.click}/>}); break;
       case 'necklaces':
             this.setState({show:
-              <ProductList items={this.state.necklaces}
+              <ProductList items={this.props.necklaces}
               click={this.props.click}/>}); break;
     }
   }

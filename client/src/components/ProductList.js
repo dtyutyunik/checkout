@@ -7,7 +7,7 @@ export default function ProductList(props){
 
       return (
         <div key={index} className="items">
-          <img src={require("../media/silverWatch.jpeg")} alt={i.image}/>
+          <img src={require(`../media/${i.image}`)} alt={i.image}/>
         <div>
         <p> Name: {i.name}</p>
 

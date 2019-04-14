@@ -111,11 +111,10 @@ class App extends Component {
               this.sum();
               this.setState({
                 view:
-                <div>
+                <div className='example'>
 
                 <StripeProvider apiKey={Publishable_key}>
-                      <div className="example">
-                        <h1>React Stripe Elements Example</h1>
+                      <div>
                         <Elements>
                           <Checkout amount={this.state.sum}/>
                         </Elements>

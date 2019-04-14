@@ -56,16 +56,16 @@ input[type='text'],
 
     }
 
-img{
+/* img{
   height: 200px;
   width: 200px;
-}
+} */
 
 nav{
-  border:1px solid red;
+  /* border:1px solid red; */
   display:flex;
   justify-content: space-around;
-  background: silver;
+  background: black;
 }
 
 nav >a{
@@ -73,9 +73,65 @@ nav >a{
   font-size: 2em;
   /* background: black; */
   color:white;
+    text-shadow: 4px 4px 8px black;
 }
 
 nav>a:hover{
   color:red;
   pointer-events: auto;
+}
+
+.checkout{
+  border: 2px solid purple;
+}
+
+.example{
+
+  /* overflow: hidden; */
+  position: absolute;
+  top:0;
+  right: 0;
+  width: 0px;
+  height: 100vh;
+  background: teal;
+  animation: slidein 2s forwards;
+
+}
+
+.aboutus{
+  position: relative;
+  height:100vh;
+  width:100vw;
+  overflow: hidden;
+}
+
+.aboutus>img{
+
+}
+
+
+.cover{
+  z-index: 1;
+  position: absolute;
+  top: 37%;
+  left: 45%;
+  font-size: 4em;
+  color:white;
+  font-family: Bodoni;
+  text-shadow: 4px 4px 8px black;
+
+}
+
+
+
+@keyframes slidein {
+  0%   {
+
+   }
+
+  100% {
+
+    width: 350px;
+
+   }
 }
