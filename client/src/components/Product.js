@@ -11,14 +11,16 @@ export default class Product extends Component{
     }
   }
 
+  componentDidMount(){
+
+  }
+
+
   handleView=(e)=>{
     this.setState({
       view: e
     })
 
-    componentDidMount(){
-      
-    }
 
 
     switch(e){
