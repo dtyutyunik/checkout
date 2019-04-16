@@ -9,7 +9,6 @@ export default function Nav(props){
           <a onClick={()=>props.handleMenuClick("aboutus")}>About Us</a>
           <a onClick={()=>props.handleMenuClick("products")}>Product</a>
           <a onClick={()=>props.handleMenuClick("checkout")}>Checkout</a>
-
         </nav>
 
     </div>

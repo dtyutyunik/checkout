@@ -3,8 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import {necklaces,watches,earrings} from './Store.js';
 import Product from './components/Product';
-import Total from './components/Total';
-import CheckoutForm from './components/CheckoutForm';
 import Checkout from './components/Checkout';
 import Nav from './components/Nav';
 import AboutUs from './components/AboutUs';
@@ -24,9 +22,10 @@ class App extends Component {
         necklaces: necklaces,
         watches: watches,
         earrings: earrings,
-        selected: 'all',
+        selected: 'earrings',
         view: '',
-        sum: 0
+        sum: 0,
+        checkout: false
     }
   }
 
@@ -78,6 +77,7 @@ class App extends Component {
       )
     })
 
+    this.sum();
   }
 
   selection=(item)=>{
@@ -93,7 +93,8 @@ class App extends Component {
     switch(e){
       case 'aboutus':
             this.setState({
-              view: <AboutUs/>
+              view: <AboutUs/>,
+              checkout: false
             });
             break;
       case 'products':
@@ -104,24 +105,14 @@ class App extends Component {
               earrings={this.state.earrings}
               necklaces={this.state.necklaces}
               click={this.click}
-              />
+              />,
+              checkout: false
             });
             break;
       case 'checkout':
-              this.sum();
-              this.setState({
-                view:
-                <div className='example'>
-
-                <StripeProvider apiKey={Publishable_key}>
-                      <div>
-                        <Elements>
-                          <Checkout amount={this.state.sum}/>
-                        </Elements>
-                      </div>
-                    </StripeProvider>
-                    </div>
-              });
+      this.setState({
+        checkout: !this.state.checkout
+      })
               break;
 
 
@@ -140,26 +131,19 @@ class App extends Component {
       <div className="App">
       <Nav handleMenuClick={this.handleMenuClick}/>
         {this.state.view}
+
+<div className={this.state.checkout ? 'cashin': 'cashout'}>
+        <StripeProvider apiKey={Publishable_key}>
+              <div>
+                <Elements>
+                  <Checkout amount={this.state.sum}/>
+                </Elements>
+              </div>
+            </StripeProvider>
+            </div>
       </div>
     );
   }
 }
 
 export default App;
-
-// <StripeProvider apiKey={Publishable_key}>
-//       <div className="example">
-//         <h1>React Stripe Elements Example</h1>
-//         <Elements>
-//           <Checkout />
-//         </Elements>
-//       </div>
-//     </StripeProvider>
-
-
-// <Total
-// watches={this.state.watches}
-// earrings={this.state.earrings}
-// necklaces={this.state.necklaces}
-// checkout={this.checkout}
-// />

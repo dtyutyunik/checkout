@@ -6,15 +6,14 @@ export default class Product extends Component{
   constructor(props){
     super(props);
     this.state={
-      view: 'all',
+      view: 'earrings',
       show: '',
     }
   }
 
-  componentDidMount(){
-    this.handleView(this.state.view)
-  }
-
+componentDidMount(){
+  this.handleView('earrings');
+}
 
   handleView=(e)=>{
     this.setState({
@@ -37,6 +36,11 @@ export default class Product extends Component{
             this.setState({show:
               <ProductList items={this.props.necklaces}
               click={this.props.click}/>}); break;
+      default:
+      this.setState({show:
+        <ProductList
+        items={this.props.earrings}
+        click={this.props.click}/>}); break;
     }
   }
 
@@ -45,12 +49,12 @@ export default class Product extends Component{
 render(){
     let {view}=this.state;
       return(
-        <div>
-          <button onClick={()=>this.handleView('All')}>All</button>
-          <button onClick={()=>this.handleView('earrings')}>Earrings</button>
-          <button onClick={()=>this.handleView('watches')}>Watches</button>
-          <button onClick={()=>this.handleView('necklaces')}>Necklaces</button>
-
+        <div >
+            <div className='productContainer'>
+          <button onClick={()=>this.handleView('earrings')}>EARRINGS</button>
+          <button onClick={()=>this.handleView('watches')}>WATCHES</button>
+          <button onClick={()=>this.handleView('necklaces')}>NECKLACES</button>
+            </div>
           {this.state.show}
         </div>
       )

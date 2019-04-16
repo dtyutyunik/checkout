@@ -43,8 +43,7 @@ handleChange=(e)=>{
 
     return (
       <div className="checkout">
-      The transaction was {this.state.complete}
-        <p>Would you like to complete the purchase?</p>
+        <h5>Would you like to complete the purchase?</h5>
         <div className='card'>
         <form>
           <label>
@@ -76,8 +75,8 @@ handleChange=(e)=>{
         </form>
         </div>
 
-        <button type='submit' onClick={this.submit}>Pay</button>
-        amount is{this.props.amount}
+        <button type='submit' onClick={this.submit}>Pay amount of {this.props.amount}</button>
+
       </div>
     );
   }
