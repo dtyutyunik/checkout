@@ -27,8 +27,6 @@ class Checkout extends Component {
         });
         console.log(response);
       }
-
-
   if (response!==undefined&&response.ok) this.setState({complete: true})
 }
 
@@ -39,15 +37,7 @@ handleChange=(e)=>{
     [name]: value
   })
 }
-
-
-handleReady = () => {
-  console.log('[ready]');
-};
-
-
   render() {
-
     return (
       <div className="checkout">
         <h5>Would you like to complete the purchase?</h5>
@@ -82,7 +72,9 @@ handleReady = () => {
         </form>
         </div>
 
-        {this.state.complete===true?<button type='submit' disabled>Paid</button>:this.state.purchase||this.props.amount===0?<button className='paymentInfoNeeded' disabled>Pay</button>:<button type='submit' disabled={this.state.purchase||this.props.amount===0} onClick={this.submit}>Pay amount of {this.props.amount}</button>}
+        {this.state.complete===true?<button type='submit' disabled>Paid</button>:this.state.purchase||this.props.amount===0?
+        <button className='paymentInfoNeeded' disabled>Pay</button>:
+        <button type='submit' disabled={this.state.purchase||this.props.amount===0} onClick={this.submit}>Pay amount of {this.props.amount}</button>}
 
       </div>
     );
