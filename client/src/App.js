@@ -122,7 +122,7 @@ class App extends Component {
 
 
   componentDidMount=()=>{
-    this.handleMenuClick("products");
+    this.handleMenuClick("aboutus");
   }
 
 
