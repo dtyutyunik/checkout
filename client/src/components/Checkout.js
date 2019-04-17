@@ -10,23 +10,26 @@ class Checkout extends Component {
     this.submit = this.submit.bind(this);
      this.state = {
        complete: false,
-       name: ''
+       name: '',
+       purchase: false
      };
   }
 
   async submit(ev) {
+    ev.preventDefault();
     let {token} = await this.props.stripe.createToken({name: this.state.name});
 
-    console.log(token.id)
-  let response = await fetch(`/charge/${this.props.amount}`, {
-    method: "POST",
-    headers: {"Content-Type": "text/plain"},
-    body: token.id
-  });
-  console.log(response);
+      if(token!==undefined){
+        var response = await fetch(`/charge/${this.props.amount}`, {
+          method: "POST",
+          headers: {"Content-Type": "text/plain"},
+          body: token.id
+        });
+        console.log(response);
+      }
 
 
-  if (response.ok) this.setState({complete: true})
+  if (response!==undefined&&response.ok) this.setState({complete: true})
 }
 
 handleChange=(e)=>{
@@ -37,6 +40,10 @@ handleChange=(e)=>{
   })
 }
 
+
+handleReady = () => {
+  console.log('[ready]');
+};
 
 
   render() {
@@ -58,24 +65,24 @@ handleChange=(e)=>{
           <br/>
            <label>
            Card Number
-              <CardNumberElement className="cardElements" required/>
+              <CardNumberElement className="cardElements"/>
            </label>
           <label>
             Expiry date
-            <CardExpiryElement  className="cardElements" required/>
+            <CardExpiryElement  className="cardElements"/>
           </label>
           <label>
             CVC
-            <CardCVCElement className="cardElements" required/>
+            <CardCVCElement className="cardElements"/>
           </label>
           <label>
             Zip Code
-            <PostalCodeElement className="cardElements" required/>
+            <PostalCodeElement className="cardElements"/>
           </label>
         </form>
         </div>
 
-        <button type='submit' onClick={this.submit}>Pay amount of {this.props.amount}</button>
+        {this.state.complete===true?<button type='submit' disabled>Paid</button>:this.state.purchase||this.props.amount===0?<button className='paymentInfoNeeded' disabled>Pay</button>:<button type='submit' disabled={this.state.purchase||this.props.amount===0} onClick={this.submit}>Pay amount of {this.props.amount}</button>}
 
       </div>
     );
